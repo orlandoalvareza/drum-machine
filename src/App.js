@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import './App.css';
+
 function App() {
   const [display, setDisplay] = useState('');
   const [volume, setVolume] = useState(60);
