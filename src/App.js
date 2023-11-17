@@ -7,54 +7,24 @@ function App() {
   const [volume, setVolume] = useState(60);
   const [power, setPower] = useState(false);
 
-  function playMedia(trackData) {
-    const audio = new Audio(trackData.track);
-    audio.play();
-
-    setDisplay(trackData.name);
-  }
-
-  function playAudio(letter, track) {
-    playMedia(letter, track);
+  function handlePlayAudio(trackData) {
+    if (power) {
+      setDisplay('--- POWER OFF ---');
+    } else {
+      const audio = new Audio(trackData.track);
+      audio.play();
+  
+      setDisplay(trackData.name);
+    }
   }
 
   const handleClickPad = (id) => {
     const pad = traks.filter(pad => pad.id === id)[0];
-    playMedia(pad);
+    handlePlayAudio(pad);
   }
 
   const handleKeyDown = (event) => {
-    switch (event.key.toUpperCase()) {
-      case 'Q':
-        playMedia('Q', 'HEATER ONE');
-        break;
-      case 'W':
-        playMedia('W', 'HEATER TWO');
-        break;
-      case 'E':
-        playMedia('E', 'HEADER THREE');
-        break;
-      case 'A':
-        playMedia('A', 'HEADER FOUR');
-        break;
-      case 'S':
-        playMedia('S', 'CLAP');
-        break;
-      case 'D':
-        playMedia('D', 'OPEN HH');
-        break;
-      case 'Z':
-        playMedia('Z', 'KICK N HAT');
-        break;
-      case 'X':
-        playMedia('X', 'KICK');
-        break;
-      case 'C':
-        playMedia('C', 'CLOSED HH');
-        break;
-      default:
-        break;
-    }
+    handleClickPad(event.key.toUpperCase());
   };
 
   const handleVolume = (event) => {
@@ -68,7 +38,7 @@ function App() {
   };
 
   const handlePower = () => {
-    setPower(!power);
+    setPower(power => !power);
   };
 
   return (
