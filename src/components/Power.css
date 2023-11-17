@@ -1,0 +1,32 @@
+#power-container {
+  width: 15%;
+  margin: 8px 0;
+  border-radius: 15%;
+}
+
+.power-container-off {
+  background-color: #b42b3f;
+}
+
+.power-container-on {
+  background-color: #62a388;
+}
+
+#power-button {
+  font-size: 1.1rem;
+  background-color: #3a4750;
+  height: 100%;
+  width: 48%;
+  border: 1px solid #6a759b;
+  border-radius: 15%;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+}
+
+.power-button-off {
+  float: right;
+}
+
+.power-button-on {
+  float: left;
+}

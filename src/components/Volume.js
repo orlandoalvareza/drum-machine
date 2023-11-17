@@ -1,3 +1,5 @@
+import './Volume.css';
+
 const Volume = ({ onVolume }) => {
   const changeVolumeHandler = (event) => {
     const volumeValue = event.target.value;
@@ -5,8 +7,8 @@ const Volume = ({ onVolume }) => {
   };
 
   return (
-    <div id="volume-slider">
-      <h4 id="volume-header">Volume Control</h4>
+    <div>
+      <h4 className="volume-header">Volume Control</h4>
       <input
         onChange={changeVolumeHandler}
         type="range"

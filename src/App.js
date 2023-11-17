@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Volume from './components/Volume';
+import Power from './components/Power';
 import PadBank from './components/PadBank';
 import './App.css';
 
@@ -27,14 +28,13 @@ function App() {
         <div id="display">{display}</div>
         <div className="controls-container">
           <Volume onVolume={handleVolume}/>
-          <div className={power ? 'power-container-off' : 'power-container-on'} id = 'power-container'>
-            <button
-              onClick={handlePower}
-              className={power ? 'power-button-off' : 'power-button-on'} id = 'power-button'
-            ></button>
-          </div>
+          <Power onPower={handlePower} power={power}/>
         </div>
-        <PadBank power={power} volume={volume} onDisplay={handleDisplay}/>
+        <PadBank 
+          power={power} 
+          volume={volume} 
+          onDisplay={handleDisplay}
+        />
       </div>
     </div>
   );

@@ -1,0 +1,21 @@
+.volume-header {
+  font-family: 'Segoe UI', Tahoma;
+  color: #ded5c4;
+  padding: 0 0 5px;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  height: 5px;
+  background: #30475e;
+  border-radius: 5px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 8px;
+  border-radius: 20%;
+  background: #ded5c4;
+  cursor: pointer;
+}
