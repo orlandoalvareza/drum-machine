@@ -26,16 +26,30 @@
   font-family: Georgia, serif;
   font-size: 1.4rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #222831;
   background-color: #cdd5e0;
   text-align: center;
   height: 40px;
   margin-bottom: 25px;
-  padding: 10px 0;
 }
 
 .controls-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  #drum-machine {
+    padding: 30px;
+  }
+
+  #display {
+    font-size: 1.2rem;
+    height: 35px;
+    margin-bottom: 20px;
+  }
 }
