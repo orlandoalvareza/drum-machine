@@ -7,11 +7,13 @@ function App() {
   const [volume, setVolume] = useState(60);
   const [power, setPower] = useState(false);
 
-  function handlePlayAudio(trackData) {
+  const handlePlayAudio = trackData => {
     if (power) {
       setDisplay('--- POWER OFF ---');
     } else {
       const audio = new Audio(trackData.track);
+      
+      audio.volume = volume / 100;
       audio.play();
   
       setDisplay(trackData.name);
@@ -28,13 +30,8 @@ function App() {
   };
 
   const handleVolume = (event) => {
-    const volumeChange = event.target.value;
-    setVolume(volumeChange);
-
-    const audioItem = document.querySelectorAll('audio');
-    audioItem.forEach((audio) => {
-      audio.volume = volumeChange / 100;
-    });
+    const newVolume = event.target.value;
+    setVolume(newVolume);
   };
 
   const handlePower = () => {
