@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Volume from './components/Volume';
 import PadBank from './components/PadBank';
 import './App.css';
 
@@ -12,8 +13,7 @@ function App() {
     setDisplay(trackName);
   }
 
-  const handleVolume = (event) => {
-    const newVolume = event.target.value;
+  const handleVolume = (newVolume) => {
     setVolume(newVolume);
   };
 
@@ -26,16 +26,7 @@ function App() {
       <div id="drum-machine">
         <div id="display">{display}</div>
         <div className="controls-container">
-          <div id="volume-slider">
-            <h4 id="volume-header">Volume Control</h4>
-            <input
-              onChange={handleVolume}
-              type="range"
-              value={volume}
-              min="0"
-              max="100"
-            />
-          </div>
+          <Volume onVolume={handleVolume}/>
           <div className={power ? 'power-container-off' : 'power-container-on'} id = 'power-container'>
             <button
               onClick={handlePower}
