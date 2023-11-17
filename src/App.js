@@ -7,20 +7,20 @@ function App() {
   const [volume, setVolume] = useState(60);
   const [power, setPower] = useState(false);
 
-  // const handleKeyDown = (event) => {
-  //   console.log('here');
-  //   console.log(event);
-  // }
-
-  function playMedia(letter, track) {
-    const audio = document.getElementById(letter);
+  function playMedia(trackData) {
+    const audio = new Audio(trackData.track);
     audio.play();
-    setDisplay(track);
+
+    setDisplay(trackData.name);
   }
 
   function playAudio(letter, track) {
-
     playMedia(letter, track);
+  }
+
+  const handleClickPad = (id) => {
+    const pad = traks.filter(pad => pad.id === id)[0];
+    playMedia(pad);
   }
 
   const handleKeyDown = (event) => {
@@ -99,171 +99,72 @@ function App() {
             id="heater-one"
             autoFocus
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('Q', 'HEATER ONE');
-            }}
+            onClick={() => {handleClickPad('Q')}}
           >
-            <audio
-              className="clip"
-              id="Q"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
-              }
-            />
             Q
           </button>
           <button
             className="drum-pad"
             id="heater-two"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('W', 'HEATER TWO');
-            }}
+            onClick={() => {handleClickPad('W')}}
           >
-            <audio
-              className="clip"
-              id="W"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3'
-              }
-            />
             W
           </button>
           <button
             className="drum-pad"
             id="heater-three"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('E', 'HEADER THREE');
-            }}
+            onClick={() => {handleClickPad('E')}}
           >
-            <audio
-              className="clip"
-              id="E"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3'
-              }
-            />
             E
           </button>
           <button
             className="drum-pad"
             id="heater-four"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('A', 'HEADER FOUR');
-            }}
+            onClick={() => {handleClickPad('A')}}
           >
-            <audio
-              className="clip"
-              id="A"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3'
-              }
-            />
             A
           </button>
           <button
             className="drum-pad"
             id="Clap"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('S', 'CLAP');
-            }}
+            onClick={() => {handleClickPad('S')}}
           >
-            <audio
-              className="clip"
-              id="S"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3'
-              }
-            />
             S
           </button>
           <button
             className="drum-pad"
             id="Open-HH"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('D', 'OPEN HH');
-            }}
+            onClick={() => {handleClickPad('D')}}
           >
-            <audio
-              className="clip"
-              id="D"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3'
-              }
-            />
             D
           </button>
           <button
             className="drum-pad"
             id="Kick-n-Hat"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('Z', 'KICK N HAT');
-            }}
+            onClick={() => {handleClickPad('Z')}}
           >
-            <audio
-              className="clip"
-              id="Z"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3'
-              }
-            />
             Z
           </button>
           <button
             className="drum-pad"
             id="Kick"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('X', 'KICK');
-            }}
+            onClick={() => {handleClickPad('X')}}
           >
-            <audio
-              className="clip"
-              id="X"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3'
-              }
-            />
             X
           </button>
           <button
             className="drum-pad"
             id="Closed-HH"
             onKeyDown={handleKeyDown}
-            onClick={() => {
-              playAudio('C', 'CLOSED HH');
-            }}
+            onClick={() => {handleClickPad('C')}}
           >
-            <audio
-              className="clip"
-              id="C"
-              src={
-                power
-                  ? '#'
-                  : 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3'
-              }
-            />
             C
           </button>
         </div>
@@ -273,3 +174,51 @@ function App() {
 }
 
 export default App;
+
+const traks = [
+  {
+    id: 'Q',
+    name: 'HEATER ONE',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
+  },
+  {
+    id: 'W',
+    name: 'HEATER TWO',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3'
+  },
+  {
+    id: 'E',
+    name: 'HEADER THREE',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3'
+  },
+  {
+    id: 'A',
+    name: 'HEADER FOUR',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3'
+  },
+  {
+    id: 'S',
+    name: 'CLAP',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3'
+  },
+  {
+    id: 'D',
+    name: 'OPEN HH',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3'
+  },
+  {
+    id: 'Z',
+    name: 'KICK N HAT',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3'
+  },
+  {
+    id: 'X',
+    name: 'KICK',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3'
+  },
+  {
+    id: 'C',
+    name: 'CLOSED HH',
+    track: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3'
+  },
+]
