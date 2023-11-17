@@ -7,6 +7,11 @@ function App() {
   const [volume, setVolume] = useState(60);
   const [power, setPower] = useState(false);
 
+  // const handleKeyDown = (event) => {
+  //   console.log('here');
+  //   console.log(event);
+  // }
+
   function playMedia(letter, track) {
     const audio = document.getElementById(letter);
     audio.play();
@@ -14,52 +19,43 @@ function App() {
   }
 
   function playAudio(letter, track) {
-    const KEY_Q = 81;
-    const KEY_W = 87;
-    const KEY_E = 69;
-    const KEY_A = 65;
-    const KEY_S = 83;
-    const KEY_D = 68;
-    const KEY_Z = 90;
-    const KEY_X = 88;
-    const KEY_C = 67;
 
     playMedia(letter, track);
-
-    document.addEventListener('keydown', (e) => {
-      switch (e.keyCode) {
-        case KEY_Q:
-          playMedia('Q', 'HEATER ONE');
-          break;
-        case KEY_W:
-          playMedia('W', 'HEATER TWO');
-          break;
-        case KEY_E:
-          playMedia('E', 'HEADER THREE');
-          break;
-        case KEY_A:
-          playMedia('A', 'HEADER FOUR');
-          break;
-        case KEY_S:
-          playMedia('S', 'CLAP');
-          break;
-        case KEY_D:
-          playMedia('D', 'OPEN HH');
-          break;
-        case KEY_Z:
-          playMedia('Z', 'KICK N HAT');
-          break;
-        case KEY_X:
-          playMedia('X', 'KICK');
-          break;
-        case KEY_C:
-          playMedia('C', 'CLOSED HH');
-          break;
-        default:
-          break;
-      }
-    });
   }
+
+  const handleKeyDown = (event) => {
+    switch (event.key.toUpperCase()) {
+      case 'Q':
+        playMedia('Q', 'HEATER ONE');
+        break;
+      case 'W':
+        playMedia('W', 'HEATER TWO');
+        break;
+      case 'E':
+        playMedia('E', 'HEADER THREE');
+        break;
+      case 'A':
+        playMedia('A', 'HEADER FOUR');
+        break;
+      case 'S':
+        playMedia('S', 'CLAP');
+        break;
+      case 'D':
+        playMedia('D', 'OPEN HH');
+        break;
+      case 'Z':
+        playMedia('Z', 'KICK N HAT');
+        break;
+      case 'X':
+        playMedia('X', 'KICK');
+        break;
+      case 'C':
+        playMedia('C', 'CLOSED HH');
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleVolume = (event) => {
     const volumeChange = event.target.value;
@@ -101,6 +97,8 @@ function App() {
           <button
             className="drum-pad"
             id="heater-one"
+            autoFocus
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('Q', 'HEATER ONE');
             }}
@@ -119,6 +117,7 @@ function App() {
           <button
             className="drum-pad"
             id="heater-two"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('W', 'HEATER TWO');
             }}
@@ -137,6 +136,7 @@ function App() {
           <button
             className="drum-pad"
             id="heater-three"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('E', 'HEADER THREE');
             }}
@@ -155,6 +155,7 @@ function App() {
           <button
             className="drum-pad"
             id="heater-four"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('A', 'HEADER FOUR');
             }}
@@ -173,6 +174,7 @@ function App() {
           <button
             className="drum-pad"
             id="Clap"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('S', 'CLAP');
             }}
@@ -191,6 +193,7 @@ function App() {
           <button
             className="drum-pad"
             id="Open-HH"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('D', 'OPEN HH');
             }}
@@ -209,6 +212,7 @@ function App() {
           <button
             className="drum-pad"
             id="Kick-n-Hat"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('Z', 'KICK N HAT');
             }}
@@ -227,6 +231,7 @@ function App() {
           <button
             className="drum-pad"
             id="Kick"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('X', 'KICK');
             }}
@@ -245,6 +250,7 @@ function App() {
           <button
             className="drum-pad"
             id="Closed-HH"
+            onKeyDown={handleKeyDown}
             onClick={() => {
               playAudio('C', 'CLOSED HH');
             }}
